@@ -6,16 +6,12 @@ public class isConsecutivelyRepeated {
 		Queue<Integer> q1 = new Queue<>();
 		while (!q.isEmpty()) {
 			if (q.head() == number ) {
-				q1.insert(q.remove());
-				if (!q.isEmpty()) {
 					if (q.head() == number) {
 						flag = true;
 					}				
-				}
 			}
-			else {
 			q1.insert(q.remove());
-			}
+			
 		}
 		while (!q1.isEmpty()) {
 			q.insert(q1.remove());
