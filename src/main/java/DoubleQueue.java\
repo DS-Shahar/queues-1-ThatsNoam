@@ -1,0 +1,70 @@
+package queue;
+
+public class DoubleQueue {
+private Queue<Integer> q_fast;
+private Queue<Integer> q_slowed;
+private int num;
+
+public DoubleQueue(Queue<Integer> q1, Queue<Integer> q2, int num) {
+	this.q_fast= q1;
+	this.q_slowed= q2;
+	this.num= num;
+}
+
+public Queue<Integer> getQ1() {
+	return q_fast;
+}
+
+public void setQ1(Queue<Integer> q1) {
+	this.q_fast = q1;
+}
+
+public Queue<Integer> getQ2() {
+	return q_slowed;
+}
+
+public void setQ2(Queue<Integer> q2) {
+	this.q_slowed = q2;
+}
+
+public int getNum() {
+	return num;
+}
+
+public void setNum(int num) {
+	this.num = num;
+}
+public Queue<Integer> act(int number){
+	if(number==1) {
+		return q_slowed;
+		
+	}
+	else {
+		return q_fast;
+	}
+}
+public void add(int num, int act) {
+	if(act==1) {
+		q_slowed.insert(num);
+	}
+	else {
+		q_fast.insert(num);
+	}
+}
+
+public int remove() {
+	int number= 0;
+	if(num==5) {
+		number= q_slowed.head();
+		q_slowed.remove();
+		setNum(0);
+	}
+	else {
+		number= q_fast.head();
+		q_fast.remove();
+		setNum(num+1);
+	}
+	return number;
+}
+
+}
